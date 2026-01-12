@@ -41,7 +41,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.clip
 
@@ -49,7 +48,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 
 import kotlinx.coroutines.delay
 
@@ -58,7 +56,7 @@ import kotlinx.coroutines.delay
 fun IntroScreen(onProfileSaved: (String, Int, Int, Int, Int, String, String) -> Unit = { _, _, _, _, _, _, _ -> }) {
     var currentStep by remember { mutableStateOf(0) }
 
-    // Auto-advance from Splash (Step 0) to Onboarding (Step 1)
+    // tabdi min step 0 i step 1
     if (currentStep == 0) {
         LaunchedEffect(Unit) {
             delay(2000)
@@ -312,8 +310,8 @@ fun GenderOption(title: String, icon: Painter, isSelected: Boolean, onClick: () 
 @Composable
 fun WeightStep(gender: String, weight: String, onWeightChange: (String) -> Unit) {
     MeasurementStep(
-        title = "How much do you weigh?",
-        description = "Weight is a critical factor in determining your daily hydration needs. Please enter your current weight:",
+        title = "your current weight?",
+        description = " Please enter your current weight:",
         value = weight,
         onValueChange = onWeightChange,
         unit = "kg",
@@ -326,7 +324,7 @@ fun WeightStep(gender: String, weight: String, onWeightChange: (String) -> Unit)
 fun HeightStep(gender: String, height: String, onHeightChange: (String) -> Unit) {
     MeasurementStep(
         title = "How tall are you?",
-        description = "Your height is another key factor in customizing your hydration plan. Choose your height measurement:",
+        description = "Choose your height measurement:",
         value = height,
         onValueChange = onHeightChange,
         unit = "cm",

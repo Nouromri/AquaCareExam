@@ -60,7 +60,15 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.ui.graphics)
     ksp(libs.androidx.room.compiler)
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
+    // Location
+    implementation(libs.play.services.location)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

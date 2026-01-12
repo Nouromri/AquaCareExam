@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.exam.data.WaterRepository
 import com.example.exam.data.entity.UserProfile
 import com.example.exam.data.entity.WaterLog
+import com.example.exam.network.WeatherClient
+import com.example.exam.network.WeatherResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -20,6 +22,22 @@ class WaterViewModel(private val repository: WaterRepository) : ViewModel() {
         HistoryEntry("10:30", 200),
     ))
     val history: StateFlow<List<HistoryEntry>> = _history
+
+    private val _weather = MutableStateFlow<WeatherResponse?>(null)
+    val weather: StateFlow<WeatherResponse?> = _weather
+
+    fun fetchWeather(lat: Double, lon: Double) {
+        viewModelScope.launch {
+            try {
+                val response = WeatherClient.api.getWeather(lat, lon)
+                _weather.value = response
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+
     val todayTotal: StateFlow<Int> = repository.getTodayTotal()
         .map { it ?: 0 }
         .stateIn(

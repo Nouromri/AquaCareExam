@@ -1,10 +1,6 @@
 package com.example.exam.ui
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
+
 import com.example.exam.R
 
 sealed class Screen(val route: String, val title: String, val icon: Int) {

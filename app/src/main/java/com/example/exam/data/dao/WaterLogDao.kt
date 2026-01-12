@@ -8,7 +8,7 @@ import com.example.exam.data.entity.WaterLog
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface WaterLogDao {
+interface  WaterLogDao {
     @Insert
     suspend fun insert(waterLog: WaterLog)
 
